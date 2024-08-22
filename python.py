@@ -1,51 +1,40 @@
-1# Initialize an empty list to store tasks
-tasks = []
+def add(x, y):
+    return x + y
 
-def add_task():
-    task = input("Enter a new task: ")
-    tasks.append(task)
-    print("Task added successfully!")
+def subtract(x, y):
+    return x - y
 
-def view_tasks():
-    if not tasks:
-        print("No tasks found.")
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y != 0:
+        return x / y
     else:
-        print("Your tasks:")
-        for i, task in enumerate(tasks, start=1):
-            print(f"{i}. {task}")
-
-def mark_completed():
-    view_tasks()
-    try:
-        task_number = int(input("Enter the task number to mark as completed: "))
-        if 1 <= task_number <= len(tasks):
-            completed_task = tasks.pop(task_number - 1)
-            print(f"Task '{completed_task}' marked as completed.")
-        else:
-            print("Invalid task number. Please try again.")
-    except ValueError:
-        print("Invalid input. Please enter a valid task number.")
+        return "Error: Cannot divide by zero"
 
 def main():
-    while True:
-        print("\n--- To-Do List ---")
-        print("1. Add a task")
-        print("2. View tasks")
-        print("3. Mark task as completed")
-        print("4. Exit")
-        choice = input("Enter your choice: ")
+    print("Welcome to the Basic Calculator!")
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
 
-        if choice == "1":
-            add_task()
-        elif choice == "2":
-            view_tasks()
-        elif choice == "3":
-            mark_completed()
-        elif choice == "4":
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please select a valid option.")
+    print("Select operation:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    choice = input("Enter your choice (1/2/3/4): ")
+
+    if choice == '1':
+        print("Result:", add(num1, num2))
+    elif choice == '2':
+        print("Result:", subtract(num1, num2))
+    elif choice == '3':
+        print("Result:", multiply(num1, num2))
+    elif choice == '4':
+        print("Result:", divide(num1, num2))
+    else:
+        print("Invalid choice. Please select a valid operation.")
 
 if __name__ == "__main__":
     main()
